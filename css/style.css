@@ -410,7 +410,7 @@ body {
 .badge-outline {
     border: 1px solid var(--navy);
     border-radius: 50px;
-    padding: 5px 16px;
+    padding: 8px 16px;
     font-size: 13px;
     background: #fff;
 }
@@ -436,7 +436,6 @@ body {
     padding-top: 80px !important;
 }
 
-/* cards page ke edge ke paas, thodi spacing ke saath */
 .setup-wrap {
     padding-left: clamp(16px, 2.5vw, 40px);
     padding-right: clamp(16px, 2.5vw, 40px);
@@ -519,6 +518,15 @@ body {
     max-height: 320px;
     opacity: 1;
     margin-top: 16px;
+}
+.contact-sec .col-lg-6:first-child {
+    padding-top: 10px;
+}
+
+@media (max-width: 991.98px) {
+    .contact-sec .col-lg-6:first-child {
+        padding-top: 0;
+    }
 }
 
 @media (hover: none) {
@@ -1030,7 +1038,6 @@ body {
     color: #aab3bf;
 }
 
-/* thin underline on active tab */
 .process-tab.active::before {
     content: '';
     position: absolute;
@@ -1086,6 +1093,403 @@ body {
     bottom: 18px;
     font-size: 13px;
     color: #b3bcc7;
+}
+
+/* ---------- TESTIMONIALS ---------- */
+.testimonials {
+    background: #fff;
+    padding: 80px 0 90px;
+    scroll-margin-top: 80px;
+}
+
+.testi-title {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.25;
+    margin: 0;
+}
+
+.testi-sub {
+    max-width: 640px;
+    margin-top: 16px;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--muted);
+}
+
+.testi-marquee {
+    margin-top: 64px;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+}
+
+.testi-track {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    animation: testi-scroll 15s linear infinite;
+}
+
+.testi-marquee:hover .testi-track {
+    animation-play-state: paused;
+}
+
+/* ---------- CONTACT SECTION ---------- */
+.contact-sec {
+    background: #fff;
+    padding: 90px 0 100px;
+    scroll-margin-top: 80px;
+}
+
+.contact-title {
+    font-size: clamp(2rem, 4.4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--navy);
+    margin-bottom: 22px;
+}
+
+.contact-text {
+    max-width: 480px;
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--muted);
+    margin-bottom: 26px;
+}
+
+.contact-points li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+    font-size: 15px;
+    color: var(--muted);
+}
+
+.cp-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    background: #eef0f3;
+    color: var(--navy);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    flex-shrink: 0;
+}
+
+.contact-label {
+    margin: 30px 0 12px;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: #8a96a5;
+}
+
+.contact-chat {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 18px;
+    border-radius: 50px;
+    background: #f0f2f4;
+    color: var(--navy);
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.contact-chat .ti {
+    font-size: 24px;
+    color: #25d366;
+}
+
+.contact-chat:hover {
+    background: #e4e8ec;
+    color: var(--navy);
+    transform: translateY(-2px);
+}
+
+/* form card */
+.contact-card {
+    max-width: 620px;
+    background: #fff;
+    border: 1px solid #e8ecf0;
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 18px 44px rgba(15, 39, 68, 0.08);
+}
+
+.contact-card-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 22px 26px 20px;
+    background: #f9fafd;
+    border-bottom: 1px solid #e8ecf0;
+}
+
+.contact-card-head h3 {
+    margin: 0 0 4px;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--navy);
+}
+
+.contact-card-head p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--muted);
+}
+
+.contact-card-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: #e3e8ee;
+    color: var(--navy);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.contact-form {
+    padding: 24px 26px 22px;
+}
+
+.contact-form .form-label {
+    margin-bottom: 7px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+}
+
+.contact-form .form-label span {
+    color: var(--red);
+}
+
+.contact-form .form-control,
+.contact-form .form-select {
+    background-color: #f9fafd;
+    border: 1px solid #dfe5ec;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 14px;
+    color: var(--navy);
+}
+
+.contact-form .form-control::placeholder {
+    color: #a3adba;
+}
+
+.contact-form .form-control:focus,
+.contact-form .form-select:focus {
+    background-color: #fff;
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px rgba(31, 122, 140, 0.15);
+}
+
+.contact-form .form-control.is-invalid,
+.contact-form .form-select.is-invalid,
+.contact-form .phone-field.is-invalid {
+    border-color: var(--red);
+    background-image: none;
+}
+
+.contact-form textarea.form-control {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* phone field */
+.phone-field {
+    display: flex;
+    align-items: stretch;
+    background: #f9fafd;
+    border: 1px solid #dfe5ec;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.phone-field:focus-within {
+    background: #fff;
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px rgba(31, 122, 140, 0.15);
+}
+
+.phone-code {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 14px;
+    font-size: 14px;
+    color: var(--navy);
+    border-right: 1px solid #dfe5ec;
+    white-space: nowrap;
+}
+
+.phone-field .form-control {
+    flex: 1;
+    min-width: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+.phone-field .form-control:focus {
+    box-shadow: none;
+    background: transparent;
+}
+
+.contact-form .btn-brand {
+    padding: 14px 28px;
+}
+
+.contact-note {
+    margin: 16px 0 0;
+    text-align: center;
+    font-size: 11.5px;
+    color: #98a3b0;
+}
+
+.contact-note a {
+    color: #98a3b0;
+    text-decoration: underline;
+}
+
+@media (max-width: 991.98px) {
+    .contact-sec {
+        padding: 64px 0 70px;
+    }
+
+    .contact-card {
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .contact-card-head,
+    .contact-form {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+}
+@keyframes testi-scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(calc(-50% - 10px));
+    }
+}
+
+.testi-card {
+    position: relative;
+    flex: 0 0 325px;
+    height: 345px;
+    border-radius: 28px;
+    background: #f0f2f4;
+    overflow: hidden;
+    text-align: left;
+}
+
+.testi-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 26px 26px 0 28px;
+}
+
+.testi-quote {
+    font-size: 40px;
+    color: #cfd5dc;
+    line-height: 1;
+}
+
+.testi-stars {
+    display: flex;
+    gap: 3px;
+    color: #f5a623;
+    font-size: 14px;
+}
+
+.testi-text {
+    margin: 14px 0 0;
+    padding: 0 26px 0 28px;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--navy);
+    display: -webkit-box;
+    -webkit-line-clamp: 8;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.testi-author {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px 14px 12px;
+    background: #fff;
+    border-top-right-radius: 28px;
+}
+
+.testi-author > img {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #e6e9ed;
+    flex-shrink: 0;
+}
+
+.testi-author strong {
+    display: block;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.3;
+}
+
+.testi-author span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12.5px;
+    color: var(--muted);
+}
+
+.testi-g {
+    width: 13px;
+    height: 13px;
+}
+
+@media (max-width: 575.98px) {
+    .testimonials {
+        padding: 60px 0 70px;
+    }
+
+    .testi-marquee {
+        margin-top: 40px;
+    }
+
+    .testi-card {
+        flex-basis: 285px;
+        height: 335px;
+    }
 }
 
 @media (max-width: 767.98px) {
