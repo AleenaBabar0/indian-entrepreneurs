@@ -66,3 +66,64 @@ requiredFields.forEach(function (field) {
         field.classList.remove('is-invalid');
     });
 });
+
+/* ===== Stats counter (count-up on scroll) ===== */
+const counters = document.querySelectorAll('.counter');
+const COUNTER_DURATION = 2000; // ms
+const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function easeOutCubic(t) {
+    return 1 - Math.pow(1 - t, 3);
+}
+
+function formatCounter(el, value) {
+    el.textContent = Math.floor(value) + (el.dataset.suffix || '');
+}
+
+function animateCounter(el) {
+    const target = parseFloat(el.dataset.target) || 0;
+
+    if (reduceMotion) {
+        formatCounter(el, target);
+        return;
+    }
+
+    let start = null;
+
+    function step(timestamp) {
+        if (start === null) start = timestamp;
+        const progress = Math.min((timestamp - start) / COUNTER_DURATION, 1);
+        formatCounter(el, target * easeOutCubic(progress));
+
+        if (progress < 1) {
+            requestAnimationFrame(step);
+        } else {
+            formatCounter(el, target);
+        }
+    }
+
+    requestAnimationFrame(step);
+}
+
+if (counters.length) {
+    counters.forEach(function (el) {
+        formatCounter(el, 0);
+    });
+
+    if ('IntersectionObserver' in window) {
+        const counterObserver = new IntersectionObserver(function (entries, observer) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    observer.unobserve(entry.target); // sirf ek baar chalega
+                }
+            });
+        }, { threshold: 0.5 });
+
+        counters.forEach(function (el) {
+            counterObserver.observe(el);
+        });
+    } else {
+        counters.forEach(animateCounter);
+    }
+}
