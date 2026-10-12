@@ -127,3 +127,33 @@ if (counters.length) {
         counters.forEach(animateCounter);
     }
 }
+
+
+(function () {
+    const track = document.getElementById('testiTrack');
+    if (!track) return;
+
+    const GAP = 20;                
+    const SPEED = 57;              
+    const originals = Array.from(track.children);
+    if (!originals.length) return;
+
+   
+    const setWidth = track.scrollWidth + GAP;
+    const viewport = track.parentElement.offsetWidth;
+
+    const halfSets = Math.max(1, Math.ceil(viewport / setWidth) + 1);
+    const totalSets = halfSets * 2;
+
+    const fragment = document.createDocumentFragment();
+    for (let i = 1; i < totalSets; i++) {
+        originals.forEach(function (card) {
+            const clone = card.cloneNode(true);
+            clone.setAttribute('aria-hidden', 'true');
+            fragment.appendChild(clone);
+        });
+    }
+    track.appendChild(fragment);
+
+    track.style.animationDuration = (halfSets * setWidth / SPEED) + 's';
+})();
